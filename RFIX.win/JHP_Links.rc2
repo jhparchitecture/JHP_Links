@@ -1,0 +1,17 @@
+/* *****************************************************************************
+// Resource description for the JHP_Links Add-On
+// API Development Kit 22; Windows resources
+//
+// Namespaces:			Contact person:
+//		-None-
+//
+// [SG compatible] - Yes
+// ****************************************************************************/
+
+#include "JHP_Links.grc.rc2"
+#include "JHP_LinksFix.grc.rc2"
+
+
+1		ICON    LOADONCALL MOVEABLE IMPURE  ACAP.ico
+
+

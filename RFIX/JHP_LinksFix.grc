@@ -1,0 +1,35 @@
+/* *****************************************************************************
+// Non-localizable resource description for the JHP_Links Add-On
+// API Development Kit 22; Mac/Win
+//
+// Namespaces:			Contact person:
+//		-None-
+//
+// [SG compatible] - Yes
+// ****************************************************************************/
+
+#include "JHP_LinksResIDs.hpp"
+'MDID' 32500 "Add-On Identifier" {
+
+	//9-digit Author Developer ID:
+	709314381
+
+	//Generate this using 'Support\Tools\Win\AddOn Management\AddOnAdmin.exe'
+	//10-digit Addon Local ID:
+	1589914788
+}
+
+'GICN'	JHPLINKS_FILE_ICONID "LinksFileIcon SVG Icon"{
+	"LinksFileIcon"
+}
+
+'GICN'	JHPLINKS_WEB_ICONID "LinksWebIcon SVG Icon"{
+	"LinksWebIcon"
+}
+
+'GICN'	JHPLINKS_DIR_ICONID "LinksDirIcon SVG Icon"{
+	"LinksDirIcon"
+}
+
+
+
