@@ -68,7 +68,7 @@ namespace JHP
         };
 
         const struct Link Github = {
-            "https://github.com/coltonf/JHP_Menu_Docs",
+            "https://github.com/jhparchitecture",
             Web
         };
 
