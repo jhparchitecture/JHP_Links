@@ -1,6 +1,6 @@
-﻿// *****************************************************************************
+// *****************************************************************************
 // Helper functions for Add-On development
-// API Development Kit 23; Mac/Win
+// API Development Kit 21; Mac/Win
 //
 // Namespaces:		Contact person:
 //		-None-
@@ -78,11 +78,17 @@ void CCALL	WriteReport (const char* format, ...)
 
 void CCALL	WriteReport_Alert (const char* format, ...)
 {
+	char		buffer [512];
 	va_list		argList;
 
 	va_start (argList, format);
-	ACAPI_WriteReport (format, true, argList);
-	va_end (argList);
+#if defined (macintosh)
+	vsnprintf (buffer, sizeof (buffer), format, argList);
+#else
+	vsnprintf_s (buffer, sizeof (buffer), _TRUNCATE, format, argList);
+#endif
+
+	ACAPI_WriteReport (buffer, true);
 
 	return;
 }		// WriteReport_Alert
@@ -128,7 +134,7 @@ void CCALL	WriteReport_End (GSErrCode err)
 
 void 	ErrorBeep (const char* info, GSErrCode err)
 {
-	DBPrintf ("%s: %s", info, ErrID_To_Name (err));
+	DBPrintf ("%s: %d", info, err);
 	GSSysBeep ();
 }		// ErrorBeep
 
@@ -402,7 +408,7 @@ const char*		AttrID_To_Name (API_AttrTypeID typeID)
 		"MEP System",
 		"Operation Profile",
 		"Building Material",
-		"Markup Style"
+		"Mark-Up Style"
 	};
 
 	if (typeID < API_ZombieAttrID || typeID > API_LastAttributeID)
@@ -419,7 +425,7 @@ const char*		AttrID_To_Name (API_AttrTypeID typeID)
 const GS::UniString		ElemID_To_Name (API_ElemTypeID typeID)
 {
 	GS::UniString	elemNameStr;
-
+	
 	ACAPI_Goodies (APIAny_GetElemTypeNameID, (void*) typeID, &elemNameStr);
 
 	return elemNameStr;
@@ -462,7 +468,7 @@ bool	ClickAPoint (const char		*prompt,
 	err = ACAPI_Interface (APIIo_GetPointID, &pointInfo, nullptr);
 	if (err != NoError) {
 		if (err != APIERR_CANCEL)
-			ACAPI_WriteReport ("Error in APIIo_GetPointID: %s", true, ErrID_To_Name (err));
+			WriteReport_Alert ("Error in APICmd_GetPointID: %d", err);
 		return false;
 	}
 
@@ -551,7 +557,7 @@ bool	ClickAnElem (const char			*prompt,
 	err = ACAPI_Interface (APIIo_GetPointID, &pointInfo, nullptr);
 	if (err != NoError) {
 		if (err != APIERR_CANCEL)
-			ACAPI_WriteReport ("Error in APIIo_GetPointID: %s", true, ErrID_To_Name (err));
+			WriteReport_Alert ("Error in APIIo_GetPointID: %d", err);
 		return false;
 	}
 
@@ -610,40 +616,71 @@ bool	ClickAnElem (const char			*prompt,
 //	return the neigs
 // -----------------------------------------------------------------------------
 
-GS::Array<API_Neig>	ClickElements_Neig (const char		*prompt,
-										API_ElemTypeID	needTypeID)
+API_Neig**	ClickElements_Neig (const char		*prompt,
+								API_ElemTypeID	needTypeID,
+								Int32			*nItem)
 {
-	API_Neig			theNeig;
-	GS::Array<API_Neig> neigs;
+	API_Neig	**items, theNeig;
+	Int32		n = 0;
 
-	while (true) {
+	items = (API_Neig **) BMAllocateHandle (0, ALLOCATE_CLEAR, 0);
+
+	while (items != nullptr) {
 		if (ClickAnElem (prompt, needTypeID, &theNeig)) {
 			if (theNeig.neigID == APINeig_None)
 				break;
-			neigs.Push (theNeig);
+			items = (API_Neig **) BMReallocHandle ((GSHandle) items, (n + 1) * sizeof (API_Neig), 0, 0);
+			if (items != nullptr) {
+				(*items) [n] = theNeig;
+				n ++;
+			}
 		} else
 			break;
 	}
 
-	return neigs;
+	if (n == 0 && items != nullptr) {
+		BMKillHandle ((GSHandle *) &items);
+		items = nullptr;
+	}
+
+	if (nItem != nullptr)
+		*nItem = n;
+
+	return items;
 }		// ClickElements_Neig
 
 
 // -----------------------------------------------------------------------------
 // Ask the user to click several elements of the requested type
-//	return element guids
+//	return element headers
 // -----------------------------------------------------------------------------
 
-GS::Array<API_Guid>	ClickElements_Guid (const char		*prompt,
-										API_ElemTypeID	needTypeID)
+API_Elem_Head**	ClickElements_ElemHead (const char		*prompt,
+										API_ElemTypeID	needTypeID,
+										Int32			*nItem)
 {
-	GS::Array<API_Guid> elemGuids;
-	GS::Array<API_Neig> neigs = ClickElements_Neig (prompt, needTypeID);
-	for (const API_Neig& neig : neigs)
-		elemGuids.Push (neig.guid);
+	API_Neig		**items;
+	API_Elem_Head	**elemHead;
+	Int32			i;
+	GSErrCode		err;
 
-	return elemGuids;
-}		// ClickElements_Guid
+	items = ClickElements_Neig (prompt, needTypeID, nItem);
+	if (items == nullptr)
+		return nullptr;
+
+	elemHead = (API_Elem_Head **) BMAllocateHandle (*nItem * sizeof (API_Elem_Head), ALLOCATE_CLEAR, 0);
+	err = BMError ();
+	if (err == NoError) {
+		for (i = 0; i < *nItem; i++) {
+			(*elemHead)[i].guid	= (*items)[i].guid;
+		}
+	} else
+		*nItem = 0;
+
+	BMKillHandle ((GSHandle *) &items);
+
+	return elemHead;
+}		// ClickElements_ElemHead
 
 
 // -----------------------------------------------------------------------------

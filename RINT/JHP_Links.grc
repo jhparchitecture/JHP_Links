@@ -35,14 +35,3 @@
 /* [ 11] */				"JHP Logos^ES^EE^EI^ED^EW^E3^EL^32503"
 }
 
-
-/* Localizable dialog resource(s) with the accompanying help resource(s) */
-
-'GDLG'  32500    Palette | topCaption | close | grow   0   0  450  150  "JHP Links"  {
-/* [  1] */ Browser			0   0  450  150
-}
-
-'DLGH'  32500  DLG_32500_Browser_Palette {
-1	"Browser Control"		Browser_0
-}
-
