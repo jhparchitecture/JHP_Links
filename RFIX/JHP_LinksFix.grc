@@ -31,5 +31,6 @@
 	"LinksDirIcon"
 }
 
-
-
+'GICN'	JHPLINKS_EXE_ICONID "LinksExeIcon SVG Icon"{
+	"LinksExeIcon"
+}

@@ -87,6 +87,10 @@ GSErrCode __ACENV_CALL MenuCommandHandler(const API_MenuParams *params)
 			case 11:
 				Open(Links::Logos);
 				break;
+
+			case 12:
+				Open(Links::AutoScript);
+				break;
 			}
 		}
 		}

@@ -87,5 +87,10 @@ namespace JHP
             Directory
         };
 
+		const struct Link AutoScript = {
+			"\"\\\\earth\\STANDARDS\\CAD\\ArchiCAD\\Tools\\JHP_AutoScript.exe\"",
+			File
+		};
+
     }
 }
