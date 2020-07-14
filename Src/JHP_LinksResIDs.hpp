@@ -9,6 +9,6 @@
 #define JHPLINKS_FILE_ICONID        32501
 #define JHPLINKS_WEB_ICONID         32502
 #define JHPLINKS_DIR_ICONID         32503
+#define JHPLINKS_EXE_ICONID         32504
 
 #endif // JHP_LINKS_RESIDS_HPP
-
