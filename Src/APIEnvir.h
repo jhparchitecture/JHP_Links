@@ -1,6 +1,6 @@
 ﻿// *****************************************************************************
 // General settings for AddOn developments
-// API Development Kit 22; Mac/Win
+// API Development Kit 24; Mac/Win
 //
 // Namespaces:		Contact person:
 //		-None-
@@ -20,7 +20,6 @@
 
 #if defined (WINDOWS)
 	#include "Win32Interface.hpp"
-	#pragma warning (disable: 4068)
 #endif
 
 #if defined (macintosh)
