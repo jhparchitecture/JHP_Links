@@ -1,4 +1,4 @@
-// *****************************************************************************
+/* *****************************************************************************
 // Localizable resource description for the JHP_Links Add-On
 // API Development Kit 22; Mac/Win
 //
@@ -27,22 +27,13 @@
 /* [  3] */				"City of Dallas^ES^EE^EI^ED^EW^E3^EL^32501"
 /* [  4] */				"OCE Plotwave^ES^EE^EI^ED^EW^E3^EL^32501"
 /* [  5] */				"Dimensions 101^ES^EE^EI^ED^EW^E3^EL^32501"
-/* [  6] */				"IBC Website^ES^EE^EI^ED^EW^E3^EL^32502"
-/* [  7] */				"UL Website^ES^EE^EI^ED^EW^E3^EL^32502"
-/* [  8] */				"JHP Slack^ES^EE^EI^ED^EW^E3^EL^32502"
-/* [  9] */				"JHP Github^ES^EE^EI^ED^EW^E3^EL^32502"
-/* [ 10] */				"JHP Standards^ES^EE^EI^ED^EW^E3^EL^32503"
-/* [ 11] */				"JHP Logos^ES^EE^EI^ED^EW^E3^EL^32503"
-/* [ 12] */				"JHP AutoScript^ES^EE^EI^ED^EW^E3^EL^32504"
+/* [  6] */				"ANSI Website^ES^EE^EI^ED^EW^E3^EL^32502"
+/* [  7] */				"IBC Website^ES^EE^EI^ED^EW^E3^EL^32502"
+/* [  8] */				"UL Website^ES^EE^EI^ED^EW^E3^EL^32502"
+/* [  9] */				"JHP Slack^ES^EE^EI^ED^EW^E3^EL^32502"
+/* [ 10] */				"JHP Github^ES^EE^EI^ED^EW^E3^EL^32502"
+/* [ 11] */				"JHP Standards^ES^EE^EI^ED^EW^E3^EL^32503"
+/* [ 12] */				"JHP Logos^ES^EE^EI^ED^EW^E3^EL^32503"
+/* [ 13] */				"JHP AutoScript^ES^EE^EI^ED^EW^E3^EL^32504"
 }
 
-
-/* Localizable dialog resource(s) with the accompanying help resource(s) */
-
-'GDLG'  32500    Palette | topCaption | close | grow   0   0  450  150  "JHP Links"  {
-/* [  1] */ Browser			0   0  450  150
-}
-
-'DLGH'  32500  DLG_32500_Browser_Palette {
-1	"Browser Control"		Browser_0
-}

@@ -15,8 +15,6 @@
 #include "ACAPinc.h" // also includes APIdefs.h
 #include "JHP_LinksResIDs.hpp"
 
-#include "BrowserPalette.hpp"
-
 #include "JHP_Links.h"
 using namespace JHP;
 
@@ -26,73 +24,71 @@ using namespace JHP;
 
 // -----------------------------------------------------------------------------
 
-/* static void ShowInEmbeddedBrowser (const char* url)
-{
-	if (!BrowserPalette::HasInstance ())
-			BrowserPalette::CreateInstance ();
-		BrowserPalette::GetInstance ().Show ();
-		BrowserPalette::GetInstance ().LoadURL (url);
-} */
-
 GSErrCode __ACENV_CALL MenuCommandHandler(const API_MenuParams *params)
 {
 	return ACAPI_CallUndoableCommand("JHP_Links Menu Command", [&]() -> GSErrCode {
 		switch (params->menuItemRef.menuResID)
 		{
-		case JHPLINKS_MENU_STRINGSID:
-		{
-			//Look at JHP_Links.grc for ordering
-			switch (params->menuItemRef.itemIndex)
+			case JHPLINKS_MENU_STRINGSID:
 			{
-			case 1:
-				Open(Links::DesignManual);
-				break;
+				//Look at JHP_Links.grc for ordering
+				switch (params->menuItemRef.itemIndex)
+				{
+				case 1:
+					Open(Links::DesignManual);
+					break;
 
-			case 2:
-				Open(Links::FairHousing);
-				break;
+				case 2:
+					Open(Links::FairHousing);
+					break;
 
-			case 3:
-				Open(Links::CityOfDallas);
-				break;
+				case 3:
+					Open(Links::CityOfDallas);
+					break;
 
-			case 4:
-				Open(Links::OCEPlotwave);
-				break;
+				case 4:
+					Open(Links::OCEPlotwave);
+					break;
 
-			case 5:
-				Open(Links::Dimensions101);
-				break;
+				case 5:
+					Open(Links::Dimensions101);
+					break;
 
-			case 6:
-				Open(Links::IBC);
-				break;
+				case 6:
+					Open(Links::ANSI);
+					break;
 
-			case 7:
-				Open(Links::UL);
-				break;
+				case 7:
+					Open(Links::IBC);
+					break;
 
-			case 8:
-				Open(Links::Slack);
-				break;
+				case 8:
+					Open(Links::UL);
+					break;
 
-			case 9:
-				Open(Links::Github);
-				break;
+				case 9:
+					Open(Links::Slack);
+					break;
 
-			case 10:
-				Open(Links::Standards);
-				break;
+				case 10:
+					Open(Links::Github);
+					break;
 
-			case 11:
-				Open(Links::Logos);
-				break;
+				case 11:
+					Open(Links::Standards);
+					break;
 
-			case 12:
-				Open(Links::AutoScript);
-				break;
+				case 12:
+					Open(Links::Logos);
+					break;
+
+				case 13:
+					Open(Links::AutoScript);
+					break;
+				}
+				
+			break;
 			}
-		}
 		}
 
 		return NoError;

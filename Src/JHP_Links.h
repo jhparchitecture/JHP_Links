@@ -57,6 +57,11 @@ namespace JHP
             File
         };
 
+		const struct Link ANSI = {
+			"https://codes.iccsafe.org/content/icca117-12009",
+			Web
+		};
+
         const struct Link IBC = {
             "https://codes.iccsafe.org/content/IBC2018P2",
             Web
