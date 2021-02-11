@@ -55,30 +55,34 @@ GSErrCode __ACENV_CALL MenuCommandHandler(const API_MenuParams *params)
 					break;
 
 				case 6:
-					Open(Links::IBC);
+					Open(Links::ANSI);
 					break;
 
 				case 7:
-					Open(Links::UL);
+					Open(Links::IBC);
 					break;
 
 				case 8:
-					Open(Links::Slack);
+					Open(Links::UL);
 					break;
 
 				case 9:
-					Open(Links::Github);
+					Open(Links::Slack);
 					break;
 
 				case 10:
-					Open(Links::Standards);
+					Open(Links::Github);
 					break;
 
 				case 11:
-					Open(Links::Logos);
+					Open(Links::Standards);
 					break;
 
 				case 12:
+					Open(Links::Logos);
+					break;
+
+				case 13:
 					Open(Links::AutoScript);
 					break;
 				}
