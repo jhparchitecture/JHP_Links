@@ -47,11 +47,11 @@ namespace JHP
             File
         };
 
-        const struct Link OCEPlotwave = {
-            "\"\\\\earth\\STANDARDS\\CAD\\Autodesk\\Tools\\source\\Oce Plotwave 500.pdf\"",
-            File
-        };
-
+//        const struct Link OCEPlotwave = {
+//            "\"\\\\earth\\STANDARDS\\CAD\\Autodesk\\Tools\\source\\Oce Plotwave 500.pdf\"",
+//            File
+//        };
+//
         const struct Link Dimensions101 = {
             "\"\\\\earth\\STANDARDS\\05 GENERAL OFFICE\\JHP University\\Lectures\\Dimensioning A101\\Dimension 101.PDF\"",
             File
@@ -72,16 +72,16 @@ namespace JHP
             Web
         };
 
-        const struct Link Github = {
-            "https://github.com/jhparchitecture",
-            Web
-        };
-
-        const struct Link Slack = {
-            "https://jhp-architecture.slack.com/app_redirect?channel=CFC6P6355",
-            Web
-        };
-
+//        const struct Link Github = {
+//            "https://github.com/jhparchitecture",
+//            Web
+//        };
+//
+//        const struct Link Slack = {
+//            "https://jhp-architecture.slack.com/app_redirect?channel=CFC6P6355",
+//            Web
+//        };
+//
         const struct Link Logos = {
             "\"\\\\earth\\MARKETING\\4 - Brand_Website\\Logos\"",
             Directory
