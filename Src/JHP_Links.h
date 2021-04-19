@@ -33,12 +33,12 @@ namespace JHP
     namespace Links
     {
         const struct Link DesignManual = { 
-            "\"\\\\earth\\STANDARDS\\01 PLANNING AND DESIGN\\03 TRAINING\\Design Manual\\150722_JHP Design Manual.pdf\"", 
+            "\"\\\\earth\\STANDARDS\\01 PLANNING AND DESIGN\\Design Manual\\150722_JHP Design Manual.pdf\"", 
             File 
         };
 
-        const struct Link FairHousing = {
-            "\"\\\\earth\\STANDARDS\\04 ARCHITECTURAL REFERENCE\\Fair Housing\\Fair Housing Act Design Manual.pdf\"",
+		const struct Link FairHousing = {
+            "\"\\\\earth\\LIBRARY\\Fair Housing\\Fair Housing Act Design Manual.pdf\"",
             File
         };
 
